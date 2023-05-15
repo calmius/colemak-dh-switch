@@ -1,0 +1,25 @@
+Kmonad doesn't work without some permissons and rules out of the box,
+this script handles that for you. Additionally it enables layout at startup.
+
+If you have non-systemd init system, [[https://github.com/kmonad/kmonad/tree/master/startup][see]]
+
+** Usage
++ Change input device in =colemak-dh-YOURLAYOUT.kbd= file.
+  - If you use USB keyboard, search for =*-kbd= device in =/dev/input/by-id/=
+  - If you use Laptop keyboard, search for =*-kbd= device in =/dev/input/by-path/=
+#+begin_src lisp
+  input  (device-file "/dev/input/by-id/YOURDEVICE-kbd")
+#+end_src
+
++ In the =setup.sh=, replace =/path-to= with the full path to =colemak-dh-YOURLAYOUT.kbd=
+#+begin_src emacs-lisp
+  CONFIG_FILE="/path-to/colemak-dh-YOURLAYOUT"
+#+end_src
++ Run =setup.sh=
+#+begin_src bash
+  sudo ./setup.sh
+#+end_src
+
+** Sources:
+
+[[https://github.com/ColemakMods/mod-dh/tree/master/kmonad][Kmonad config for colemak-dh]]
